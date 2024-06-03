@@ -249,7 +249,7 @@ steps:
 - task: UiPathPack@4
   inputs:
     versionType: 'AutoVersion'
-    projectJsonPath: '$(Build.SourcesDirectory)/VM_Substitute_01_ Assign Substitute BOM Items for selected Variant BOM Item_Palette tab/project.json'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_Substitute_01_Assign Substitute BOM Items for selected Variant BOM Item_Palette tab/project.json'
     orchestratorConnection: 'Uipath'
     outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
 - task: UiPathDeploy@4
@@ -265,7 +265,7 @@ steps:
 - task: UiPathPack@4
   inputs:
     versionType: 'AutoVersion'
-    projectJsonPath: '$(Build.SourcesDirectory)/VM_Substitute_01_ Assign Substitute BOM Items for selected Variant BOM Item_Search tab/project.json'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_Substitute_01_Assign Substitute BOM Items for selected Variant BOM Item_Search tab/project.json'
     orchestratorConnection: 'Uipath'
     outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
 - task: UiPathDeploy@4
