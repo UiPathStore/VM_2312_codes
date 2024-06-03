@@ -1,7 +1,7 @@
 {
   "name": "VM_Substitute_01_Assign Substitute  BOM Items for selected Variant BOM Item_Palette tab",
   "projectId": "2bd13c6a-38ac-4c9c-8e74-ef41ca4301e9",
-  "description": "VM_Substitute_01_ Assign Substitute  BOM Items for selected Variant BOM Item_Palette tab",
+  "description": "VM_Substitute_01_Assign Substitute  BOM Items for selected Variant BOM Item_Palette tab",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.System.Activities": "[24.2.0-preview]",
