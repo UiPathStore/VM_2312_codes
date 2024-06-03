@@ -1,0 +1,38 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  testCaseDirectories: |
+    VM_ColumnOperations01_SaveAsOperationOnSourceVariant
+    VM_ColumnOpertaions02_Select a Variant in Matrix table
+
+stages:
+- stage: BuildAndDeploy
+  jobs:
+  - job: Build
+    steps:
+    - powershell: |
+        $testCases = "$(testCaseDirectories)".Split("`n")
+        foreach ($testCase in $testCases) {
+          Write-Host "Processing test case: $testCase"
+
+          $projectJsonPath = "$(Build.SourcesDirectory)/$testCase/project.json"
+          $outputPath = "$(Build.ArtifactStagingDirectory)/Output/"
+          
+          # UiPath Pack Task
+          Write-Host "Running UiPathPack for $testCase"
+          & UiPathPack@4 --versionType 'AutoVersion' --projectJsonPath $projectJsonPath --orchestratorConnection 'Uipath' --outputPath $outputPath
+          
+          # UiPath Deploy Task
+          Write-Host "Running UiPathDeploy for $testCase"
+          & UiPathDeploy@4 --orchestratorConnection 'Uipath' --packagesPath $outputPath --folderName 'Variant_Matrix_Automations'
+
+          # Clean up Output folder
+          Write-Host "Cleaning up Output folder"
+          Remove-Item -Recurse -Force "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+        }
+      displayName: 'Loop through test cases and deploy'
+
