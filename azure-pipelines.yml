@@ -5,13 +5,6 @@ pool:
   uipath
  
 steps:
-
-- task: UiPathTest@4
-  inputs:
-    testTarget: 'TestSet'
-    orchestratorConnection: 'Uipath'
-    testSet: 'VariantMatrix'
-    folderName: 'Variant_Matrix_Automations'
  
 - task: UiPathPack@4
   inputs:
@@ -305,6 +298,150 @@ steps:
   inputs:
     versionType: 'AutoVersion'
     projectJsonPath: '$(Build.SourcesDirectory)/VM_Substitute_06_Add Substitute and show it on PL/project.json'
+    orchestratorConnection: 'Uipath'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'Uipath'
+    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    folderName: 'Variant_Matrix_Automations'
+
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_Edit Matrix table_01_02_03_CombinedOperations/project.json'
+    orchestratorConnection: 'Uipath'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'Uipath'
+    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    folderName: 'Variant_Matrix_Automations'
+
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_Filter01.1_Filter Variants in BOM Matrixs/project.json'
+    orchestratorConnection: 'Uipath'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'Uipath'
+    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    folderName: 'Variant_Matrix_Automations'
+
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_MatCon01_Export BOM Matrix table/project.json'
+    orchestratorConnection: 'Uipath'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'Uipath'
+    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    folderName: 'Variant_Matrix_Automations'
+
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_MatCon04_Reset Variant Matrix/project.json'
+    orchestratorConnection: 'Uipath'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'Uipath'
+    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    folderName: 'Variant_Matrix_Automations'
+
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_PL01_Create New Product Line Item/project.json'
+    orchestratorConnection: 'Uipath'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'Uipath'
+    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    folderName: 'Variant_Matrix_Automations'
+
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_PL02_Verify Tabs for Product Line Item/project.json'
+    orchestratorConnection: 'Uipath'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'Uipath'
+    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    folderName: 'Variant_Matrix_Automations'
+
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_Part01_Add New Part to PL using New Tab in Add panel/project.json'
+    orchestratorConnection: 'Uipath'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'Uipath'
+    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    folderName: 'Variant_Matrix_Automations'
+
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_Part02_Add Existing Part using Advance_Search/project.json'
+    orchestratorConnection: 'Uipath'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+- task: UiPathDeploy@4
+  inputs:
+    orchestratorConnection: 'Uipath'
+    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    folderName: 'Variant_Matrix_Automations'
+
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/VM_Part02_Add Existing Part using Palette_tab/project.json'
     orchestratorConnection: 'Uipath'
     outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
 - task: UiPathDeploy@4
