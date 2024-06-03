@@ -4,9 +4,19 @@ trigger:
 pool:
   uipath
 
+parameters:
+- name: runStage
+  displayName: 'Stage to run'
+  type: string
+  default: 'Stage1'
+  values:
+  - Stage1
+  - Stage2
+
 stages:
 - stage: Stage1
   displayName: 'Stage 1 - Save As operation'
+  condition: eq(variables['runStage'], 'Stage1')
   jobs:
   - job: SaveAsOperation
     steps:
@@ -27,6 +37,7 @@ stages:
 
 - stage: Stage2
   displayName: 'Stage 2 - Select a Variant'
+  condition: eq(variables['runStage'], 'Stage2')
   jobs:
   - job: SelectVariant
     steps:
