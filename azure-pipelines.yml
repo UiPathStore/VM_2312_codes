@@ -303,23 +303,6 @@ steps:
 - task: UiPathPack@4
   inputs:
     versionType: 'AutoVersion'
-    projectJsonPath: '$(Build.SourcesDirectory)/VM_Part01_Add New Part to PL using New Tab in Add panel/project.json'
-    orchestratorConnection: 'Uipath'
-    outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
-- task: UiPathDeploy@4
-  inputs:
-    orchestratorConnection: 'Uipath'
-    packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
-    folderName: 'Variant_Matrix_Automations'
-
-- script: |
-   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
-  displayName: 'Deleting Ouput folder'
-
-
-- task: UiPathPack@4
-  inputs:
-    versionType: 'AutoVersion'
     projectJsonPath: '$(Build.SourcesDirectory)/VM_Part02_Add Existing Part using Advance_Search/project.json'
     orchestratorConnection: 'Uipath'
     outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
