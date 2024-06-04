@@ -6,6 +6,13 @@ pool:
  
 steps:
 
+- task: UiPathTest@4
+  inputs:
+    testTarget: 'TestSet'
+    orchestratorConnection: 'Uipath'
+    testSet: 'VariantMatrix'
+    folderName: 'Variant_Matrix_Automations'
+
 - task: UiPathPack@4
   inputs:
     versionType: 'AutoVersion'
