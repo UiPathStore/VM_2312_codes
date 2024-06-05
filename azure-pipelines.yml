@@ -19,6 +19,10 @@ steps:
     packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
     folderName: 'Variant_Matrix_Automations'
 
+- script: |
+   del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+  displayName: 'Deleting Ouput folder'
+
 - task: UiPathPack@4
   inputs:
     versionType: 'AutoVersion'
