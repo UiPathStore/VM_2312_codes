@@ -4,61 +4,88 @@ trigger:
 pool:
   uipath
 
-variables:
-  outputDir: '$(Build.ArtifactStagingDirectory)/Output'
-  orchestratorConnection: 'Uipath'
-  folderName: 'Variant_Matrix_Automations'
-  runTestCase1: true  # Set this to true or false based on user preference
-  runTestCase2: true  # Set this to true or false based on user preference
-
 stages:
-- stage: TestCase1
-  displayName: "Test Case 1"
-  condition: and(succeeded(), eq(variables['runTestCase1'], 'true'))
+
+
+- stage: VM_PL01_CreateNewProductLineItem
   jobs:
-  - job: RunTestCase1
-    displayName: "Run Test Case 1"
+  - job: PackDeploy
     steps:
     - task: UiPathPack@4
       inputs:
         versionType: 'AutoVersion'
-        projectJsonPath: 'VM_ColumnOpertaions01_Save As opertaion on source Variant/project.json'
-        orchestratorConnection: $(orchestratorConnection)
-        outputPath: $(outputDir)
-
+        projectJsonPath: '$(Build.SourcesDirectory)/VM_PL01_CreateNewProductLineItem/project.json'
+        orchestratorConnection: 'Uipath'
+        outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
     - task: UiPathDeploy@4
       inputs:
-        orchestratorConnection: $(orchestratorConnection)
-        packagesPath: $(outputDir)
-        folderName: $(folderName)
-
+        orchestratorConnection: 'Uipath'
+        packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+        folderName: 'Variant_Matrix_Automations'
     - script: |
-        del /S "$(outputDir)/*.nupkg"
-      displayName: 'Deleting Output folder'
+       del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+      displayName: 'Delete output folder'
 
-- stage: TestCase2
-  displayName: "Test Case 2"
-  condition: and(succeeded(), eq(variables['runTestCase2'], 'true'))
+# Stage for VM_ColumnOpertaions01_SaveAsOpertaionOnSourceVariant
+- stage: VM_ColumnOpertaions01_SaveAsOpertaionOnSourceVariant
   jobs:
-  - job: RunTestCase2
-    displayName: "Run Test Case 2"
+  - job: PackDeploy
     steps:
     - task: UiPathPack@4
       inputs:
         versionType: 'AutoVersion'
-        projectJsonPath: 'VM_ColumnOpertaions02_Select a Variant in Matrix table/project.json'
-        orchestratorConnection: $(orchestratorConnection)
-        outputPath: $(outputDir)
-
+        projectJsonPath: '$(Build.SourcesDirectory)/VM_ColumnOpertaions01_SaveAsOpertaionOnSourceVariant/project.json'
+        orchestratorConnection: 'Uipath'
+        outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
     - task: UiPathDeploy@4
       inputs:
-        orchestratorConnection: $(orchestratorConnection)
-        packagesPath: $(outputDir)
-        folderName: $(folderName)
-
+        orchestratorConnection: 'Uipath'
+        packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+        folderName: 'Variant_Matrix_Automations'
     - script: |
-        del /S "$(outputDir)/*.nupkg"
-      displayName: 'Deleting Output folder'
+       del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+      displayName: 'Delete output folder'
+
+# Stage for VM_ColumnOpertaions02_SelectVariantInMatrixtable
+- stage: VM_ColumnOpertaions02_SelectVariantInMatrixtable
+  jobs:
+  - job: PackDeploy
+    steps:
+    - task: UiPathPack@4
+      inputs:
+        versionType: 'AutoVersion'
+        projectJsonPath: '$(Build.SourcesDirectory)/VM_ColumnOpertaions02_SelectVariantInMatrixtable/project.json'
+        orchestratorConnection: 'Uipath'
+        outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    - task: UiPathDeploy@4
+      inputs:
+        orchestratorConnection: 'Uipath'
+        packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+        folderName: 'Variant_Matrix_Automations'
+    - script: |
+       del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+      displayName: 'Delete output folder'
+
+# Stage for VM_ColumnOpertaions03_OpenVariantfromMatrixTable
+- stage: VM_ColumnOpertaions03_OpenVariantfromMatrixTable
+  jobs:
+  - job: PackDeploy
+    steps:
+    - task: UiPathPack@4
+      inputs:
+        versionType: 'AutoVersion'
+        projectJsonPath: '$(Build.SourcesDirectory)/VM_ColumnOpertaions03_OpenVariantfromMatrixTable/project.json'
+        orchestratorConnection: 'Uipath'
+        outputPath: '$(Build.ArtifactStagingDirectory)/Output/'
+    - task: UiPathDeploy@4
+      inputs:
+        orchestratorConnection: 'Uipath'
+        packagesPath: '$(Build.ArtifactStagingDirectory)/Output/'
+        folderName: 'Variant_Matrix_Automations'
+    - script: |
+       del /S "$(Build.ArtifactStagingDirectory)\Output\*.nupkg"
+      displayName: 'Delete output folder'
+
 
 
 
